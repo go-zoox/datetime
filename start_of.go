@@ -4,22 +4,27 @@ import "time"
 
 // StartOfDay returns the start of the day.
 func (dt *DateTime) StartOfDay() *DateTime {
-	return FromTime(dt.t.Truncate(24 * time.Hour))
+	// return FromTime(dt.t.Truncate(24 * time.Hour))
+	dt2, _ := FromDate(dt.Year(), dt.Month(), dt.Day(), 0, 0, 0)
+	return dt2
 }
 
 // StartOfWeek returns the start of the week.
 func (dt *DateTime) StartOfWeek() *DateTime {
-	return FromTime(dt.t.Truncate(7 * 24 * time.Hour))
+	// return FromTime(dt.t.Truncate(7 * 24 * time.Hour))
+	return dt.AddDate(0, 0, 1-dt.WeekDay()).StartOfDay()
 }
 
 // StartOfMonth returns the start of the month.
 func (dt *DateTime) StartOfMonth() *DateTime {
-	return FromDate(dt.Year(), dt.Month(), 1, 0, 0, 0)
+	dt2, _ := FromDate(dt.Year(), dt.Month(), 1, 0, 0, 0)
+	return dt2
 }
 
 // StartOfYear returns the start of the year.
 func (dt *DateTime) StartOfYear() *DateTime {
-	return FromDate(dt.Year(), 1, 1, 0, 0, 0)
+	dt2, _ := FromDate(dt.Year(), 1, 1, 0, 0, 0)
+	return dt2
 }
 
 // StartOfHour returns the start of the hour.
