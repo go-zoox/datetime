@@ -44,6 +44,16 @@ func TestEndOfYear(t *testing.T) {
 	}
 }
 
+func TestEndOfMinute(t *testing.T) {
+	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
+	dt2 := dt.EndOfMinute()
+
+	// fmt.Println(dt2.Format("YYYY-MM-DD HH:mm:ss"))
+	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-12 10:39:59" {
+		t.Errorf("expected(2022-04-12 10:39:59), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
+	}
+}
+
 func TestEndOfHour(t *testing.T) {
 	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
 	dt2 := dt.EndOfHour()
@@ -51,5 +61,15 @@ func TestEndOfHour(t *testing.T) {
 	// fmt.Println(dt2.Format("YYYY-MM-DD HH:mm:ss"))
 	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-12 10:59:59" {
 		t.Errorf("expected(2022-04-12 10:59:59), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
+	}
+}
+
+func TestEndOfQuarter(t *testing.T) {
+	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
+	dt2 := dt.EndOfQuarter()
+
+	// fmt.Println(dt2.Format("YYYY-MM-DD HH:mm:ss"))
+	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-06-30 23:59:59" {
+		t.Errorf("expected(2022-06-30 23:59:59), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
 	}
 }

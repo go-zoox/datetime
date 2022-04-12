@@ -38,11 +38,29 @@ func TestStartOfYear(t *testing.T) {
 	}
 }
 
+func TestStartOfMinute(t *testing.T) {
+	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
+	dt2 := dt.StartOfMinute()
+
+	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-12 10:39:00" {
+		t.Errorf("expected(2022-04-12 10:39:00), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
+	}
+}
+
 func TestStartOfHour(t *testing.T) {
 	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
 	dt2 := dt.StartOfHour()
 
 	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-12 10:00:00" {
 		t.Errorf("expected(2022-04-12 10:00:00), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
+	}
+}
+
+func TestStartOfQuarter(t *testing.T) {
+	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
+	dt2 := dt.StartOfQuarter()
+
+	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-01 00:00:00" {
+		t.Errorf("expected(2022-04-01 00:00:00), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
 	}
 }
