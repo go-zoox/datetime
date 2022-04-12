@@ -35,7 +35,7 @@ func (dt *DateTime) StartOfYear() *DateTime {
 	return dt2
 }
 
-// EndOfHour returns the end of the hour.
+// StartOfQuarter returns the end of the hour.
 func (dt *DateTime) StartOfQuarter() *DateTime {
 	month := dt.StartOfMonth()
 	offset := (month.Month() - 1) % 3
