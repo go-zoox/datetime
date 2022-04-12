@@ -71,7 +71,7 @@ func getUpperA(hour int) string {
 }
 
 func getZoneOffset(zoneOffset int, seperator string) string {
-	if zoneOffset > 0 {
+	if zoneOffset >= 0 {
 		return fmt.Sprintf("+%02d%s00", zoneOffset, seperator)
 	}
 
