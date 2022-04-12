@@ -21,3 +21,11 @@ func TestLocation(t *testing.T) {
 		t.Error("location is empty")
 	}
 }
+
+func TestDate(t *testing.T) {
+	dt := FromTime(time.Now())
+	year, month, day := dt.Date()
+	if year != dt.Year() || month != dt.Month() || day != dt.Day() {
+		t.Error("date is not equal")
+	}
+}

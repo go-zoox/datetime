@@ -4,14 +4,12 @@ import "time"
 
 // StartOfDay returns the start of the day.
 func (dt *DateTime) StartOfDay() *DateTime {
-	// return FromTime(dt.t.Truncate(24 * time.Hour))
 	dt2, _ := FromDate(dt.Year(), dt.Month(), dt.Day(), 0, 0, 0)
 	return dt2
 }
 
 // StartOfWeek returns the start of the week.
 func (dt *DateTime) StartOfWeek() *DateTime {
-	// return FromTime(dt.t.Truncate(7 * 24 * time.Hour))
 	return dt.AddDate(0, 0, 1-dt.WeekDay()).StartOfDay()
 }
 

@@ -70,3 +70,8 @@ func (dt *DateTime) Time() time.Time {
 func (dt *DateTime) Timestamp() int64 {
 	return dt.Time().UnixNano() / 1e6
 }
+
+// Date returns the date.
+func (dt *DateTime) Date() (year, month, day int) {
+	return dt.Year(), dt.Month(), dt.Day()
+}

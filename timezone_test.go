@@ -6,6 +6,7 @@ import (
 
 func TestSetTimeZone(t *testing.T) {
 	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12", "Asia/Shanghai")
+	// dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
 	// dt, _ := New(2022, 04, 12, 10, 39, 12)
 	if dt.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-12 10:39:12" {
 		t.Errorf("expected(2022-04-12 10:39:12), but got(%s)", dt.Format("YYYY-MM-DD HH:mm:ss"))
