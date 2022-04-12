@@ -29,3 +29,10 @@ func TestDate(t *testing.T) {
 		t.Error("date is not equal")
 	}
 }
+
+func TestString(t *testing.T) {
+	dt := FromTime(time.Now())
+	if dt.String() != dt.Format() {
+		t.Errorf("string is not equal to format: %s != %s", dt.String(), dt.Format())
+	}
+}

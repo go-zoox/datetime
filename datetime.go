@@ -75,3 +75,8 @@ func (dt *DateTime) Timestamp() int64 {
 func (dt *DateTime) Date() (year, month, day int) {
 	return dt.Year(), dt.Month(), dt.Day()
 }
+
+// String returns the string representation of the datetime.
+func (dt *DateTime) String() string {
+	return dt.Format()
+}
