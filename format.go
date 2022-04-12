@@ -22,7 +22,7 @@ func (dt *DateTime) Format(pattern ...string) string {
 	weekDay := dt.WeekDay()
 
 	_, offset := dt.t.Zone()
-	zone := offset / 3600
+	zoneOffset := offset / 3600
 
 	r := strings.NewReplacer(
 		"YYYY", fmt.Sprintf("%d", year),
@@ -49,8 +49,8 @@ func (dt *DateTime) Format(pattern ...string) string {
 		"a", getLowerA(hour),
 		"A", getUpperA(hour),
 		//
-		"ZZ", fmt.Sprintf("+%02d00", zone),
-		"Z", fmt.Sprintf("+%02d:00", zone),
+		"ZZ", getZoneOffset(zoneOffset, ""),
+		"Z", getZoneOffset(zoneOffset, ":"),
 	)
 
 	return r.Replace(patternX)
@@ -68,4 +68,12 @@ func getUpperA(hour int) string {
 		return "AM"
 	}
 	return "PM"
+}
+
+func getZoneOffset(zoneOffset int, seperator string) string {
+	if zoneOffset > 0 {
+		return fmt.Sprintf("+%02d%s00", zoneOffset, seperator)
+	}
+
+	return fmt.Sprintf("%02d%s00", zoneOffset, seperator)
 }

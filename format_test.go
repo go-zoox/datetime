@@ -1,6 +1,7 @@
 package datetime
 
 import (
+	"fmt"
 	"testing"
 	"time"
 )
@@ -46,11 +47,13 @@ func TestFormatTimeZone(t *testing.T) {
 	ti := time.Now()
 	d := FromTime(ti)
 
-	if d.Format("Z") != "+08:00" {
-		t.Errorf("expected(%s), but got(%s)", "+08:00", d.Format("Z"))
+	_, offset := ti.Zone()
+
+	if d.Format("Z") != fmt.Sprintf("+%02d:00", offset/3600) {
+		t.Errorf("expected(%s), but got(%s)", fmt.Sprintf("+%02d:00", offset/3600), d.Format("Z"))
 	}
 
-	if d.Format("ZZ") != "+0800" {
-		t.Errorf("expected(%s), but got(%s)", "+0800", d.Format("ZZ"))
+	if d.Format("ZZ") != fmt.Sprintf("+%02d00", offset/3600) {
+		t.Errorf("expected(%s), but got(%s)", fmt.Sprintf("+%02d00", offset/3600), d.Format("ZZ"))
 	}
 }
