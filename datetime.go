@@ -7,6 +7,8 @@ import (
 // DateTime is a struct that represents a datetime.
 type DateTime struct {
 	t time.Time
+	//
+	isTimeZoneSet bool
 }
 
 // Year returns the year.

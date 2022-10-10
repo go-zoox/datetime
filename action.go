@@ -5,7 +5,9 @@ import "time"
 // Add adds the duration to the datetime.
 func (dt *DateTime) Add(d time.Duration) *DateTime {
 	t := dt.t.Add(d)
-	return &DateTime{t}
+	return &DateTime{
+		t: t,
+	}
 }
 
 // Sub subtracts the duration from the datetime.
@@ -26,7 +28,9 @@ func (dt *DateTime) After(t *DateTime) bool {
 // AddDate adds the specified years, months, and days to the datetime.
 func (dt *DateTime) AddDate(years int, months int, days int) *DateTime {
 	t := dt.t.AddDate(years, months, days)
-	return &DateTime{t}
+	return &DateTime{
+		t: t,
+	}
 }
 
 // Equal reports whether t and dt represent the same time instant.

@@ -8,8 +8,17 @@ import (
 // Format return the format of time with pattern/layout
 func (dt *DateTime) Format(pattern ...string) string {
 	patternX := DefaultFormatPattern
-	if len(pattern) > 0 {
+	timezone := TimeZoneForce
+	if len(pattern) > 0 && pattern[0] != "" {
 		patternX = pattern[0]
+
+		if len(pattern) > 1 && pattern[1] != "" {
+			timezone = pattern[1]
+		}
+	}
+
+	if timezone != "" && !dt.isTimeZoneSet && dt.GetTimeZone() != timezone {
+		dt.SetTimeZone(timezone)
 	}
 
 	year := dt.Year()
