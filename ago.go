@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// AgoPattern is the pattern for Ago.
 var AgoPattern = map[string]string{
 	"now":    "just now",
 	"second": "%d second ago",
@@ -16,6 +17,7 @@ var AgoPattern = map[string]string{
 	"year":   "%d year ago",
 }
 
+// AgoOptions is the options for Ago.
 type AgoOptions struct {
 	Diff *DateTime
 }
