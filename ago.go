@@ -33,32 +33,32 @@ func (dt *DateTime) Ago(opts ...*AgoOptions) string {
 
 	delta := diff.Sub(dt)
 	if delta < time.Second {
-		return AgoPattern["now"]
+		return t(AgoPattern["now"])
 	}
 
 	if delta < time.Minute {
-		return fmt.Sprintf(AgoPattern["second"], delta/time.Second)
+		return fmt.Sprintf(t(AgoPattern["second"]), delta/time.Second)
 	}
 
 	if delta < time.Hour {
-		return fmt.Sprintf(AgoPattern["minute"], delta/time.Minute)
+		return fmt.Sprintf(t(AgoPattern["minute"]), delta/time.Minute)
 	}
 
 	if delta < time.Hour*24 {
-		return fmt.Sprintf(AgoPattern["hour"], delta/time.Hour)
+		return fmt.Sprintf(t(AgoPattern["hour"]), delta/time.Hour)
 	}
 
 	if delta < time.Hour*24*7 {
-		return fmt.Sprintf(AgoPattern["day"], delta/(time.Hour*24))
+		return fmt.Sprintf(t(AgoPattern["day"]), delta/(time.Hour*24))
 	}
 
 	if delta < time.Hour*24*30 {
-		return fmt.Sprintf(AgoPattern["week"], delta/(time.Hour*24*7))
+		return fmt.Sprintf(t(AgoPattern["week"]), delta/(time.Hour*24*7))
 	}
 
 	if delta < time.Hour*24*30*12 {
-		return fmt.Sprintf(AgoPattern["month"], delta/(time.Hour*24*30))
+		return fmt.Sprintf(t(AgoPattern["month"]), delta/(time.Hour*24*30))
 	}
 
-	return fmt.Sprintf(AgoPattern["year"], delta/(time.Hour*24*30*12))
+	return fmt.Sprintf(t(AgoPattern["year"]), delta/(time.Hour*24*30*12))
 }
