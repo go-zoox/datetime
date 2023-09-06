@@ -13,7 +13,7 @@ type I18nTranslations map[string]string
 // I18nLocales is the locales.
 type I18nLocales map[string]I18nTranslations
 
-// LocalesWeekDays is the week days.
+// SetLocales is the week days.
 func SetLocales(locales I18nLocales) {
 	Locales = locales
 }
