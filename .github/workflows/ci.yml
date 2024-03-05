@@ -21,9 +21,9 @@ jobs:
           redis-version: 6
 
       - name: Set up Go
-        uses: actions/setup-go@v2
+        uses: zmicro-design/action-setup-go@v1
         with:
-          go-version: 1.18
+          go-version: v1.18
 
       - name: install deps
         run: |
