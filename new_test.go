@@ -54,4 +54,20 @@ func TestNew(t *testing.T) {
 	if dt2.Format(pattern) != dt2.Time().Format("2006/01/02 15:04:05") {
 		t.Errorf("expected(%s), but got(%s)", dt2.Time().Format("2006/01/02 01:02:03"), dt2.Format(pattern))
 	}
+
+	sourceTimezone := "Europe/London"
+	targetTimezone := "Asia/Shanghai"
+	dt3, err3 := New(pattern, datetime, sourceTimezone)
+	if err3 != nil {
+		t.Error(err)
+	}
+	if dt3.Format(pattern) != datetime {
+		t.Errorf("expected(%s), but got(%s)", datetime, dt3.Format(pattern))
+	}
+	if err := dt3.SetTimeZone(targetTimezone); err != nil {
+		t.Fatal(err)
+	}
+	if dt3.Format(pattern) != "2016/03/07 06:04:05" {
+		t.Errorf("expected(%s), but got(%s)", dt3.Format(pattern), "2016/03/07 06:04:05")
+	}
 }
