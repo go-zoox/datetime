@@ -47,13 +47,14 @@ func (dt *DateTime) Millisecond() int {
 }
 
 // WeekDay returns the day of week
-//  0 - Sunday
-//  1 - Monday
-//  2 - Tuesday
-//  3 - Wednesday
-//  4 - Thursday
-//  5 - Friday
-//  6 - Sataurday
+//
+//	0 - Sunday
+//	1 - Monday
+//	2 - Tuesday
+//	3 - Wednesday
+//	4 - Thursday
+//	5 - Friday
+//	6 - Sataurday
 func (dt *DateTime) WeekDay() int {
 	return int(dt.t.Weekday())
 }
@@ -66,11 +67,6 @@ func (dt *DateTime) Location() *time.Location {
 // Time returns the time.Time.
 func (dt *DateTime) Time() time.Time {
 	return dt.t
-}
-
-// Timestamp return the miliseconds since the Unix epoch.
-func (dt *DateTime) Timestamp() int64 {
-	return dt.Time().UnixNano() / 1e6
 }
 
 // Date returns the date.
