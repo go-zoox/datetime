@@ -1,6 +1,7 @@
 package datetime
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -77,4 +78,19 @@ func (dt *DateTime) Date() (year, month, day int) {
 // String returns the string representation of the datetime.
 func (dt *DateTime) String() string {
 	return dt.Format()
+}
+
+// MarshalJSON implements the json.Marshaler interface.
+func (dt *DateTime) MarshalJSON() ([]byte, error) {
+	return []byte(fmt.Sprintf(`"%s"`, dt.Format())), nil
+}
+
+// UnmarshalJSON implements the json.Unmarshaler interface.
+func (dt *DateTime) UnmarshalJSON(data []byte) error {
+	t, err := time.Parse(time.RFC3339, string(data))
+	if err != nil {
+		return err
+	}
+	dt.t = t
+	return nil
 }
