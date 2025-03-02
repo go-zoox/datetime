@@ -22,6 +22,34 @@ func TestEndOfWeek(t *testing.T) {
 	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-17 23:59:59" {
 		t.Errorf("expected(2022-04-17 23:59:59), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
 	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-24"); d.EndOfWeek().Format("YYYY-MM-DD") != "2025-03-02" {
+		t.Errorf("expected(2025-03-02), but got(%s)", d.EndOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-25"); d.EndOfWeek().Format("YYYY-MM-DD") != "2025-03-02" {
+		t.Errorf("expected(2025-03-02), but got(%s)", d.EndOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-26"); d.EndOfWeek().Format("YYYY-MM-DD") != "2025-03-02" {
+		t.Errorf("expected(2025-03-02), but got(%s)", d.EndOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-27"); d.EndOfWeek().Format("YYYY-MM-DD") != "2025-03-02" {
+		t.Errorf("expected(2025-03-02), but got(%s)", d.EndOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-28"); d.EndOfWeek().Format("YYYY-MM-DD") != "2025-03-02" {
+		t.Errorf("expected(2025-03-02), but got(%s)", d.EndOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-03-01"); d.EndOfWeek().Format("YYYY-MM-DD") != "2025-03-02" {
+		t.Errorf("expected(2025-03-02), but got(%s)", d.EndOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-03-02"); d.EndOfWeek().Format("YYYY-MM-DD") != "2025-03-02" {
+		t.Errorf("expected(2025-03-02), but got(%s)", d.EndOfWeek().Format("YYYY-MM-DD"))
+	}
 }
 
 func TestEndOfMonth(t *testing.T) {

@@ -1,6 +1,8 @@
 package datetime
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestStartOfDay(t *testing.T) {
 	dt, _ := New("YYYY-MM-DD HH:mm:ss", "2022-04-12 10:39:12")
@@ -17,6 +19,34 @@ func TestStartOfWeek(t *testing.T) {
 
 	if dt2.Format("YYYY-MM-DD HH:mm:ss") != "2022-04-11 00:00:00" {
 		t.Errorf("expected(2022-04-11 00:00:00), but got(%s)", dt2.Format("YYYY-MM-DD HH:mm:ss"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-24"); d.StartOfWeek().Format("YYYY-MM-DD") != "2025-02-24" {
+		t.Errorf("expected(2025-02-24), but got(%s)", d.StartOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-25"); d.StartOfWeek().Format("YYYY-MM-DD") != "2025-02-24" {
+		t.Errorf("expected(2025-02-24), but got(%s)", d.StartOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-26"); d.StartOfWeek().Format("YYYY-MM-DD") != "2025-02-24" {
+		t.Errorf("expected(2025-02-24), but got(%s)", d.StartOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-27"); d.StartOfWeek().Format("YYYY-MM-DD") != "2025-02-24" {
+		t.Errorf("expected(2025-02-24), but got(%s)", d.StartOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-02-28"); d.StartOfWeek().Format("YYYY-MM-DD") != "2025-02-24" {
+		t.Errorf("expected(2025-02-24), but got(%s)", d.StartOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-03-01"); d.StartOfWeek().Format("YYYY-MM-DD") != "2025-02-24" {
+		t.Errorf("expected(2025-02-24), but got(%s)", d.StartOfWeek().Format("YYYY-MM-DD"))
+	}
+
+	if d, _ := New("YYYY-MM-DD", "2025-03-02"); d.StartOfWeek().Format("YYYY-MM-DD") != "2025-02-24" {
+		t.Errorf("expected(2025-02-24), but got(%s)", d.StartOfWeek().Format("YYYY-MM-DD"))
 	}
 }
 

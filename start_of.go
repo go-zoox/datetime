@@ -20,7 +20,11 @@ func (dt *DateTime) StartOfDay() *DateTime {
 
 // StartOfWeek returns the start of the week.
 func (dt *DateTime) StartOfWeek() *DateTime {
-	return dt.AddDate(0, 0, 1-dt.WeekDay()).StartOfDay()
+	weekday := dt.WeekDay()
+	if weekday == 0 {
+		weekday = 7
+	}
+	return dt.AddDate(0, 0, 1-weekday).StartOfDay()
 }
 
 // StartOfMonth returns the start of the month.
